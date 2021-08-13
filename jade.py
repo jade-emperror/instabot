@@ -1,4 +1,4 @@
 class profile:
     def __init__(self):
-        self.uid="username"
-        self.pwd="password"
+        self.uid="jade.emperror"
+        self.pwd="123yougofree"

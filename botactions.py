@@ -23,8 +23,9 @@ def login(username,password):
     login_response = requests.post(login_url, data=payload, headers=login_header)
     json_data = json.loads(login_response.text)
     if json_data["authenticated"]:
-        print("login successful")
-        cookie_jar = cookies.get_dict()
-        return {'cookies':cookies,'coolie_jar':cookie_jar,'csrf_token':cookie_jar['csrftoken'],'session_id':cookie_jar['sessionid']}
+        print(json_data)
+        cookie_jar = login_response.cookies.get_dict()
+        print(cookie_jar.keys())
+        return {'cookies':cookies,'cookie_jar':cookie_jar,'csrf_token':cookie_jar['csrftoken'],'session_id':cookie_jar['sessionid'],'login_res':login_response}
     else:
         print("login failed ", login_response.text)
